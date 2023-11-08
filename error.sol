@@ -17,7 +17,7 @@ contract ExceptionHandling {
 
         // Use revert to revert with a custom message
         if (_newValue == 42) {
-            revert("The answer to life, the universe, and everything");
+            revert("42 is my number");
         }
     }
 }
