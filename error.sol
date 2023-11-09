@@ -2,22 +2,27 @@
 pragma solidity ^0.8.19;
 
 
-contract ExceptionHandling {
-    uint256 public value;
-
-    function setValue(uint256 _newValue) public {
-        // Use require to check a condition
-        require(_newValue > 0, "Value must be greater than 0");
-
-        // Use assert to perform an internal consistency check
-        assert(_newValue != 999);
-
-        // Perform a state change
-        value = _newValue;
-
-        // Use revert to revert with a custom message
-        if (_newValue == 42) {
-            revert("42 is my number");
-        }
+contract Errorcheck{
+    bool result;
+    function checkinput(uint256 _input) public pure returns(string memory){
+        require(_input >=0,"invald uint8");
+        return "success";
+        
+}
+function checkoverflow(uint256 _num1, uint256 _num2) public{
+    uint256 sum = _num1 + _num2;
+    assert(sum <= 255);
+    result = true;
+}
+function Checkrevert(uint256 _num1, uint256 _num2) public pure returns(string memory){
+    uint256 sum = _num1 + _num2;
+    if(sum < 0 || sum > 255){
+        revert("overflow exist");
     }
+        else{
+            return("no overflow");
+        }
+
+ 
+}
 }
